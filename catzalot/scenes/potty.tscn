@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dogyg4nl6knwa"]
+
+[ext_resource type="Texture2D" uid="uid://xeh22gn3ow6b" path="res://aseprite/pottyTemp.png" id="1_hpsd2"]
+[ext_resource type="Script" path="res://scenes/potty.gd" id="1_l6si0"]
+[ext_resource type="Texture2D" uid="uid://dbd4a2nd6s3or" path="res://aseprite/pottyTemp2.png" id="2_3rww0"]
+[ext_resource type="Texture2D" uid="uid://fp03id64s76" path="res://aseprite/pottyWalk1.png" id="3_s0c5n"]
+[ext_resource type="Texture2D" uid="uid://cvdjwdef2mlqx" path="res://aseprite/pottyWalk2.png" id="4_65wqc"]
+[ext_resource type="Texture2D" uid="uid://b1j4mkvtwlivn" path="res://aseprite/pottyWalk3.png" id="5_exq7c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mucj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hpsd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3rww0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_s0c5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_65wqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_exq7c")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egju5"]
+
+[node name="Potty" type="Area2D"]
+script = ExtResource("1_l6si0")
+speed = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8mucj")
+animation = &"idle"
+frame_progress = 0.844995
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_egju5")

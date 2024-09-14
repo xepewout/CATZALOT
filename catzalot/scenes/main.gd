@@ -24,7 +24,8 @@ func load_room(room_path: String) -> void:
 	# Update the current room path
 	current_room_path = room_path
 
-# Example usage: Load the initial room when the game starts
-func _ready() -> void:
+func new_game():
 	load_room("res://scenes/test_room.tscn")
-	  # Adjust the path to your initial room scene
+	
+func _ready() -> void:
+	pass

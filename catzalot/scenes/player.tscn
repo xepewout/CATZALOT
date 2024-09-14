@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://6ynptgi42nqf"]
+[gd_scene load_steps=7 format=3 uid="uid://6ynptgi42nqf"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_uasp2"]
 [ext_resource type="Texture2D" uid="uid://c1cm8bywp1gku" path="res://aseprite/catazalotTemp.png" id="2_imbdh"]
 [ext_resource type="Texture2D" uid="uid://bmnl3uhvqyu22" path="res://aseprite/catazlotMovingTemp.png" id="3_p5dpd"]
+[ext_resource type="PackedScene" uid="uid://dogyg4nl6knwa" path="res://scenes/potty.tscn" id="4_xk1mh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1uur3"]
 animations = [{
@@ -33,3 +34,7 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1y3wu")
+
+[node name="FollowPoint" type="Marker2D" parent="."]
+
+[node name="Potty" parent="." instance=ExtResource("4_xk1mh")]
