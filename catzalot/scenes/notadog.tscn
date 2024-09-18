@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://byby3qnorg3qa"]
+
+[ext_resource type="Texture2D" uid="uid://b3ihahr2ciupn" path="res://aseprite/notadog/dancing/notadogTemp1.png" id="1_dlrae"]
+[ext_resource type="Script" path="res://scenes/notadog.gd" id="1_pa3fy"]
+[ext_resource type="Texture2D" uid="uid://2keu2h2jae4d" path="res://aseprite/notadog/dancing/notadogTemp2.png" id="2_6sgg8"]
+[ext_resource type="Texture2D" uid="uid://bmywysctn0gpc" path="res://aseprite/notadog/dancing/notadogTemp4.png" id="3_0ojt4"]
+[ext_resource type="Texture2D" uid="uid://dccr64mue06vx" path="res://aseprite/notadog/dancing/notadogTemp5.png" id="4_26hjt"]
+[ext_resource type="Texture2D" uid="uid://c2xk1btdnvcmd" path="res://aseprite/notadog/dancing/notadogTemp6.png" id="5_5amcy"]
+[ext_resource type="Texture2D" uid="uid://bepj4fxmn063a" path="res://aseprite/notadog/notadogTemp.png" id="6_huvnf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jqxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dlrae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6sgg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0ojt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_26hjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5amcy")
+}],
+"loop": true,
+"name": &"dance",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_huvnf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7nou"]
+size = Vector2(22, 46)
+
+[node name="notadog" type="Area2D"]
+script = ExtResource("1_pa3fy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7jqxo")
+animation = &"dance"
+frame_progress = 0.122865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 7)
+shape = SubResource("RectangleShape2D_x7nou")

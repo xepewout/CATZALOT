@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dyi4gkixhl307"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_0w62c"]
+[ext_resource type="Texture2D" uid="uid://c1l0gla542q1x" path="res://item/ItemAtlasTexture.png" id="2_0ioih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdgtg"]
+atlas = ExtResource("2_0ioih")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_0w62c")
+name = "Apple"
+description = "It's green because I like green"
+stackable = true
+texture = SubResource("AtlasTexture_tdgtg")

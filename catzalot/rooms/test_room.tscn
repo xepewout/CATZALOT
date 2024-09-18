@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5refm32wcct"]
+
+[ext_resource type="Script" path="res://rooms/test_room.gd" id="1_qvypp"]
+[ext_resource type="PackedScene" uid="uid://c1aoqyjflvy6h" path="res://scenes/mob_mouse.tscn" id="2_nflde"]
+[ext_resource type="PackedScene" uid="uid://byby3qnorg3qa" path="res://scenes/notadog.tscn" id="3_kqeuy"]
+[ext_resource type="PackedScene" uid="uid://dubw83q1q48j3" path="res://interactable/chest.tscn" id="4_hhwcc"]
+
+[sub_resource type="Curve2D" id="Curve2D_c47cg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 413, 95, 0, 0, 0, 0, 439, 177, 0, 0, 0, 0, 420, 235, 0, 0, 0, 0, 413, 95)
+}
+point_count = 4
+
+[node name="testRoom" type="Node"]
+script = ExtResource("1_qvypp")
+mob_mouse_scene = ExtResource("2_nflde")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 240)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="MousePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_c47cg")
+
+[node name="MouseSpawnLocation" type="PathFollow2D" parent="MousePath"]
+position = Vector2(413, 95)
+rotation = 1.26375
+
+[node name="notadog" parent="." instance=ExtResource("3_kqeuy")]
+position = Vector2(70, 109)
+
+[node name="Chest" parent="." instance=ExtResource("4_hhwcc")]
+position = Vector2(122, 52)
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

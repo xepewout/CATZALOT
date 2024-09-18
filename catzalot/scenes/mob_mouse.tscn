@@ -1,43 +1,44 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1aoqyjflvy6h"]
 
-[ext_resource type="Texture2D" uid="uid://bn2jf0flvr4ow" path="res://aseprite/mouseTemp.png" id="1_62sqt"]
+[ext_resource type="Texture2D" uid="uid://bn2jf0flvr4ow" path="res://aseprite/mobs/mouseTemp.png" id="1_62sqt"]
 [ext_resource type="Script" path="res://scenes/mob_mouse.gd" id="1_qvkr1"]
-[ext_resource type="Texture2D" uid="uid://b40j8wwtxuj81" path="res://aseprite/mouseTemp1.png" id="2_8nwgx"]
-[ext_resource type="Texture2D" uid="uid://drtx27w2wf80i" path="res://aseprite/mouseTemp2.png" id="3_h01uj"]
+[ext_resource type="Texture2D" uid="uid://b40j8wwtxuj81" path="res://aseprite/mobs/mouseTemp1.png" id="2_8nwgx"]
+[ext_resource type="Texture2D" uid="uid://drtx27w2wf80i" path="res://aseprite/mobs/mouseTemp2.png" id="3_h01uj"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2n28h"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gfog"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsb5m"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_62sqt")
-}, {
 "duration": 1.0,
 "texture": ExtResource("2_8nwgx")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_h01uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_62sqt")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 3.0
+"speed": 5.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gfog"]
-radius = 2.0
-height = 12.0
 
 [node name="MobMouse" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_qvkr1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2n28h")
-animation = &"walk"
-frame_progress = 0.792694
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7gfog")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qsb5m")
+animation = &"walk"
+frame = 2
+frame_progress = 0.990475
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

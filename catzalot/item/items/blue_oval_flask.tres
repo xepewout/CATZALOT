@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dhs6r5e0sji25"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_657n5"]
+[ext_resource type="Texture2D" uid="uid://c1l0gla542q1x" path="res://item/ItemAtlasTexture.png" id="2_y8dpm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppqsd"]
+atlas = ExtResource("2_y8dpm")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_657n5")
+name = "blue_oval_flask"
+description = "A water potion"
+stackable = false
+texture = SubResource("AtlasTexture_ppqsd")
