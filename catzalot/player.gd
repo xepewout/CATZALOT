@@ -45,8 +45,9 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 func interact()->void:
-	
 	if interact_ray.is_colliding():
+		#print("interacting with", interact_ray.get_collider())
+		#var collider = interact_ray.get_collider()
 		interact_ray.get_collider().player_interact()
 
 func _on_body_entered(body):

@@ -62,6 +62,13 @@ offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
 
+[node name="ExternalInventory" parent="InventoryInterface" instance=ExtResource("3_ovr7s")]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 243.0
+offset_right = 508.0
+offset_bottom = 283.0
+
 [node name="GrabbedSlot" parent="InventoryInterface" instance=ExtResource("5_37uki")]
 visible = false
 modulate = Color(1, 1, 1, 0.533333)

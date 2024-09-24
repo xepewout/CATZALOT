@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://1x2owrq46xfb"]
+[gd_scene load_steps=6 format=3 uid="uid://1x2owrq46xfb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b8yb5"]
 [ext_resource type="PackedScene" uid="uid://6ynptgi42nqf" path="res://player.tscn" id="2_v28bl"]
 [ext_resource type="PackedScene" uid="uid://cmxq7eqyaxeqv" path="res://hud.tscn" id="3_6ok3w"]
 [ext_resource type="Resource" uid="uid://cdxvp5ncpsxae" path="res://test_inv.tres" id="3_l02lj"]
+[ext_resource type="PackedScene" uid="uid://dubw83q1q48j3" path="res://interactable/chest.tscn" id="5_yfpkt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_b8yb5")
@@ -14,6 +15,9 @@ inventory_data = ExtResource("3_l02lj")
 [node name="RoomContainer" type="Node" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("3_6ok3w")]
+
+[node name="Chest" parent="." instance=ExtResource("5_yfpkt")]
+position = Vector2(71, 17)
 
 [connection signal="hit" from="Player" to="Player" method="hit_damage"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

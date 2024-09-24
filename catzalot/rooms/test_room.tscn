@@ -1,15 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5refm32wcct"]
+[gd_scene load_steps=10 format=3 uid="uid://b5refm32wcct"]
 
 [ext_resource type="Script" path="res://rooms/test_room.gd" id="1_qvypp"]
 [ext_resource type="PackedScene" uid="uid://c1aoqyjflvy6h" path="res://scenes/mob_mouse.tscn" id="2_nflde"]
 [ext_resource type="PackedScene" uid="uid://byby3qnorg3qa" path="res://scenes/notadog.tscn" id="3_kqeuy"]
 [ext_resource type="PackedScene" uid="uid://dubw83q1q48j3" path="res://interactable/chest.tscn" id="4_hhwcc"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="5_7h5i8"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="6_d1ef7"]
 
 [sub_resource type="Curve2D" id="Curve2D_c47cg"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 413, 95, 0, 0, 0, 0, 439, 177, 0, 0, 0, 0, 420, 235, 0, 0, 0, 0, 413, 95)
 }
 point_count = 4
+
+[sub_resource type="Resource" id="Resource_g5wmm"]
+script = ExtResource("6_d1ef7")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_e77mt"]
+script = ExtResource("5_7h5i8")
+slot_datas = Array[ExtResource("6_d1ef7")]([SubResource("Resource_g5wmm"), null, null, null])
 
 [node name="testRoom" type="Node"]
 script = ExtResource("1_qvypp")
@@ -33,5 +43,6 @@ position = Vector2(70, 109)
 
 [node name="Chest" parent="." instance=ExtResource("4_hhwcc")]
 position = Vector2(122, 52)
+inventory_data = SubResource("Resource_e77mt")
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

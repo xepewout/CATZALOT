@@ -29,4 +29,5 @@ func _on_mob_timer_timeout():
 	
 func _ready():
 	$MobTimer.start()
-	print("hi")
+	print("TestRoom Starting!")
+	

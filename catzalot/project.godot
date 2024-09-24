@@ -25,6 +25,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="CATZALOT"
 
+[global_group]
+
+external_inventory="interactables"
+
 [input]
 
 move_right={
