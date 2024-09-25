@@ -62,6 +62,8 @@ func start(pos):
 	show()
 	#$CollisionShape2D.disabled = false
 
+func get_drop_position() -> Vector2:
+	return self.global_position + Vector2(20,0)
 
 func hit_damage():
 	pass # Replace with function body.

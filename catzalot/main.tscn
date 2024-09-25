@@ -22,8 +22,6 @@ inventory_data = ExtResource("3_l02lj")
 
 [node name="RoomContainer" type="Node" parent="."]
 
-[node name="HUD" parent="." instance=ExtResource("3_6ok3w")]
-
 [node name="Chest" parent="." instance=ExtResource("5_yfpkt")]
 position = Vector2(77, 46)
 
@@ -31,5 +29,10 @@ position = Vector2(77, 46)
 position = Vector2(42, 72)
 slot_data = SubResource("Resource_i1aab")
 
+[node name="HUD" parent="." instance=ExtResource("3_6ok3w")]
+
 [connection signal="hit" from="Player" to="Player" method="hit_damage"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="drop_slot_data" from="HUD/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
+[connection signal="visibility_changed" from="HUD/InventoryInterface" to="HUD/InventoryInterface" method="_on_visibility_changed"]
+
+[editable path="HUD"]
