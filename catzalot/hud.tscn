@@ -76,3 +76,4 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="gui_input" from="InventoryInterface" to="InventoryInterface" method="_on_gui_input"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7r2dejd7b1hu"]
+
+[ext_resource type="Texture2D" uid="uid://cj7a7few6hqow" path="res://item/item_atlas.tres" id="1_osypq"]
+[ext_resource type="Script" path="res://item/pick_up/pick_up.gd" id="1_ure5n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oxx78"]
+radius = 2.0
+height = 8.0
+
+[node name="PickUp" type="RigidBody2D"]
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource("1_ure5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_osypq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_oxx78")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_oxx78")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
