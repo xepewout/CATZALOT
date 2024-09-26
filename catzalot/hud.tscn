@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmxq7eqyaxeqv"]
+[gd_scene load_steps=7 format=3 uid="uid://cmxq7eqyaxeqv"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_ngtes"]
 [ext_resource type="FontFile" uid="uid://dk3ogfnmawllw" path="res://art/ARCADE_I.TTF" id="2_ob8ux"]
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3_osb2u"]
 [ext_resource type="PackedScene" uid="uid://bosbtu5s70ymg" path="res://inventory/inventory.tscn" id="3_ovr7s"]
 [ext_resource type="PackedScene" uid="uid://chk4flmslawk" path="res://inventory/slot.tscn" id="5_37uki"]
+[ext_resource type="PackedScene" uid="uid://dorbpiqdsvind" path="res://inventory/hot_bar_inventory.tscn" id="6_uy41c"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ngtes")
@@ -76,6 +77,12 @@ visible = false
 modulate = Color(1, 1, 1, 0.533333)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+
+[node name="HotBarInventory" parent="." instance=ExtResource("6_uy41c")]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 122.0
+offset_bottom = 50.0
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="gui_input" from="InventoryInterface" to="InventoryInterface" method="_on_gui_input"]

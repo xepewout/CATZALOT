@@ -22,11 +22,11 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="QuantityLabel" type="Label" parent="."]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_qfisi")
+theme_override_font_sizes/font_size = 4
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
