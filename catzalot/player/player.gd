@@ -1,17 +1,19 @@
-extends RigidBody2D
+extends CharacterBody2D
 signal hit
 signal toggle_inventory
 
+@export var equip_inventory_data: InventoryDataEquip
 @export var inventory_data:InventoryData
 @onready var interact_ray = $InteractRay
 @onready var camera_2d = $Camera2D
 
 @export var speed = 100
-var hp = 100
+var health = 5
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	PlayerManager.player = self
 	screen_size = get_viewport_rect().size
 
 
@@ -62,6 +64,11 @@ func start(pos):
 	show()
 	#$CollisionShape2D.disabled = false
 
+func get_drop_position() -> Vector2:
+	return self.global_position + Vector2(20,0)
+
+func heal(heal_value: int) -> void:
+	health += heal_value
 
 func hit_damage():
 	pass # Replace with function body.

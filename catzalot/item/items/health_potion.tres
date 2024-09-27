@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://yl4yqccx5ve7"]
+
+[ext_resource type="Script" path="res://item/item_data_consumable.gd" id="1_4b3wd"]
+[ext_resource type="Texture2D" uid="uid://c1l0gla542q1x" path="res://item/ItemAtlasTexture.png" id="2_an1p8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hem2t"]
+atlas = ExtResource("2_an1p8")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_4b3wd")
+heal_value = 1
+name = "Health Potion"
+description = "Delishhh"
+stackable = true
+texture = SubResource("AtlasTexture_hem2t")
