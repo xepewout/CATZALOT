@@ -35,6 +35,8 @@ func load_room(room_path: String) -> void:
 
 func new_game():
 	load_room("res://rooms/test_room.tscn")
+	for node in get_tree().get_nodes_in_group("external_inventory"):
+		node.toggle_inventory.connect(toggle_inventory_interface)
 	
 			
 func _ready() -> void:
@@ -45,8 +47,7 @@ func _ready() -> void:
 	inventory_interface.force_close.connect(toggle_inventory_interface)
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	
-	for node in get_tree().get_nodes_in_group("external_inventory"):
-		node.toggle_inventory.connect(toggle_inventory_interface)
+	
 	
 
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
