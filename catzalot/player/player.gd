@@ -1,6 +1,9 @@
 extends CharacterBody2D
 signal hit
 signal toggle_inventory
+signal potty
+
+var time_accumulator = 0.0
 
 @export var equip_inventory_data: InventoryDataEquip
 @export var inventory_data:InventoryData
@@ -22,8 +25,10 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x +=1
+		self.interact_ray.rotation = 0
 	if Input.is_action_pressed("move_left"):
 		velocity.x -=1
+		self.interact_ray.rotation = PI
 	if Input.is_action_pressed("move_up"):
 		velocity.y -=1
 	if Input.is_action_pressed("move_down"):
@@ -45,11 +50,16 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+	
+	time_accumulator += delta
+	
+	if time_accumulator >= 1.5:
+		potty.emit(self.global_position)
+		print("emit")
+		time_accumulator = 0
 
 func interact()->void:
 	if interact_ray.is_colliding():
-		#print("interacting with", interact_ray.get_collider())
-		#var collider = interact_ray.get_collider()
 		interact_ray.get_collider().player_interact()
 
 func _on_body_entered(body):

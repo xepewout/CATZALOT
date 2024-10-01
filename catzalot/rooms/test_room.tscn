@@ -46,4 +46,10 @@ position = Vector2(107, 87)
 position = Vector2(42, 72)
 slot_data = SubResource("Resource_3gh0n")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 576.0
+offset_bottom = 320.0
+color = Color(0.375683, 0.76007, 0.463791, 1)
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

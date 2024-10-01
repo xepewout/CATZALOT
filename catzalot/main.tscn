@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://1x2owrq46xfb"]
+[gd_scene load_steps=10 format=3 uid="uid://1x2owrq46xfb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b8yb5"]
 [ext_resource type="PackedScene" uid="uid://6ynptgi42nqf" path="res://player/player.tscn" id="2_v28bl"]
 [ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="3_2k7q7"]
 [ext_resource type="PackedScene" uid="uid://cmxq7eqyaxeqv" path="res://hud.tscn" id="3_6ok3w"]
 [ext_resource type="Resource" uid="uid://cdxvp5ncpsxae" path="res://test_inv.tres" id="3_l02lj"]
+[ext_resource type="PackedScene" uid="uid://dogyg4nl6knwa" path="res://scenes/potty.tscn" id="8_7g5l2"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="8_48rsi"]
 [ext_resource type="PackedScene" uid="uid://bosbtu5s70ymg" path="res://inventory/inventory.tscn" id="10_4befs"]
 
@@ -37,9 +38,15 @@ visible = false
 [node name="HotBarInventory" parent="HUD" index="3"]
 visible = false
 
+[node name="Potty" parent="." instance=ExtResource("8_7g5l2")]
+visible = false
+
 [connection signal="hit" from="Player" to="Player" method="hit_damage"]
+[connection signal="potty" from="Player" to="Potty" method="_get_player_pos"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="drop_slot_data" from="HUD/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
 [connection signal="visibility_changed" from="HUD/InventoryInterface" to="HUD/InventoryInterface" method="_on_visibility_changed"]
 
+[editable path="Player"]
 [editable path="HUD"]
+[editable path="Potty"]

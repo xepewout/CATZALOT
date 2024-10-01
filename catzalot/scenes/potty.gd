@@ -1,36 +1,31 @@
 extends Area2D
 
-@export var follow_delay = 0.5
-@export var speed = 25
-var target_pos: Vector2
 var time_accumulator = 0.0
+@export var follow_delay = 1
+@export var speed = 25
+var player_pos: Vector2
+var lerpys: Vector2
+
 
 func _ready():
-	target_pos = position
+	pass
+
+func _get_player_pos(playerPosition: Vector2):
+	player_pos = playerPosition
+	print("player_pos set to", player_pos)
 	
 func _process(delta):
-	time_accumulator += delta
 	
-	if time_accumulator >= follow_delay:
-		target_pos = global_position
-		time_accumulator = 0
-		
-	$AnimatedSprite2D.play()
-	
-	if target_pos != global_position:
-		$AnimatedSprite2D.animation = "walk"
-	
-	if target_pos == global_position:
-		$AnimatedSprite2D.animation = "idle"	
-		
-	global_position = lerp(global_position, target_pos,delta)
-	
-	
-	#independent_movement(delta)
-	
-#func independent_movement(delta: float) -> void:
-	#var random_direction = Vector2(randf() - 0.5, randf() - 0.5).normalized()
-	#global_position += random_direction * speed * delta
+	time_accumulator+=delta
+	if time_accumulator > 1:
+		lerpys = lerp(global_position,player_pos - Vector2(30,0),delta)
+		$AnimatedSprite2D.play("walk")
+		if lerpys == global_position:
+			time_accumulator = 0
+			$AnimatedSprite2D.play("idle")	
+	else: 
+		$AnimatedSprite2D.play("idle")
+	global_position = lerpys
 	
 	
 	

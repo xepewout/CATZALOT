@@ -7,7 +7,7 @@ const PickUp = preload("res://item/pick_up/pick_up.tscn")
 # Reference to the RoomContainer node where rooms will be dynamically loaded
 @onready var room_container: Node = $RoomContainer
 @onready var hot_bar_inventory = $HUD/HotBarInventory
-
+@onready var potty = $Potty
 
 # Keeps track of the currently loaded room's path
 var current_room_path: String = ""
@@ -39,6 +39,7 @@ func new_game():
 		node.toggle_inventory.connect(toggle_inventory_interface)	
 	player.show()
 	hot_bar_inventory.show()
+	potty.show()
 			
 func _ready() -> void:
 	
@@ -47,9 +48,6 @@ func _ready() -> void:
 	inventory_interface.set_equip_inventory_data(player.equip_inventory_data)
 	inventory_interface.force_close.connect(toggle_inventory_interface)
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
-	
-	
-	
 
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible
@@ -65,9 +63,8 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	else:
 		inventory_interface.clear_external_inventory()
 
-
 func _on_inventory_interface_drop_slot_data(slot_data):
 	var pick_up = PickUp.instantiate()
 	pick_up.slot_data = slot_data
-	pick_up.position = player.get_drop_position()
+	pick_up.position = player.get_drop_position() + Vector2(20,0)
 	add_child(pick_up)

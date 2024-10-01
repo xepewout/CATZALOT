@@ -38,16 +38,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egju5"]
 
 [node name="Potty" type="Area2D"]
-collision_layer = 0
-collision_mask = 0
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_l6si0")
+follow_delay = null
+speed = null
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8mucj")
-animation = &"idle"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_egju5")
