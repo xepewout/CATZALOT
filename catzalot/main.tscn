@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://1x2owrq46xfb"]
+[gd_scene load_steps=10 format=3 uid="uid://1x2owrq46xfb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b8yb5"]
 [ext_resource type="PackedScene" uid="uid://6ynptgi42nqf" path="res://player/player.tscn" id="2_v28bl"]
 [ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="3_2k7q7"]
 [ext_resource type="PackedScene" uid="uid://cmxq7eqyaxeqv" path="res://hud.tscn" id="3_6ok3w"]
 [ext_resource type="Resource" uid="uid://cdxvp5ncpsxae" path="res://test_inv.tres" id="3_l02lj"]
-[ext_resource type="PackedScene" uid="uid://dubw83q1q48j3" path="res://interactable/chest.tscn" id="5_yfpkt"]
-[ext_resource type="PackedScene" uid="uid://c7r2dejd7b1hu" path="res://item/pick_up/pick_up.tscn" id="6_ekkgf"]
-[ext_resource type="Resource" uid="uid://dyi4gkixhl307" path="res://item/items/apple.tres" id="7_qbsnw"]
+[ext_resource type="PackedScene" uid="uid://dogyg4nl6knwa" path="res://scenes/potty.tscn" id="8_7g5l2"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="8_48rsi"]
 [ext_resource type="PackedScene" uid="uid://bosbtu5s70ymg" path="res://inventory/inventory.tscn" id="10_4befs"]
 
@@ -15,26 +13,15 @@
 script = ExtResource("3_2k7q7")
 slot_datas = Array[ExtResource("8_48rsi")]([null])
 
-[sub_resource type="Resource" id="Resource_i1aab"]
-script = ExtResource("8_48rsi")
-item_data = ExtResource("7_qbsnw")
-quantity = 1
-
 [node name="Main" type="Node"]
 script = ExtResource("1_b8yb5")
 
 [node name="Player" parent="." instance=ExtResource("2_v28bl")]
+visible = false
 equip_inventory_data = SubResource("Resource_6xcuw")
 inventory_data = ExtResource("3_l02lj")
 
 [node name="RoomContainer" type="Node" parent="."]
-
-[node name="Chest" parent="." instance=ExtResource("5_yfpkt")]
-position = Vector2(77, 46)
-
-[node name="PickUp" parent="." instance=ExtResource("6_ekkgf")]
-position = Vector2(42, 72)
-slot_data = SubResource("Resource_i1aab")
 
 [node name="HUD" parent="." instance=ExtResource("3_6ok3w")]
 
@@ -48,9 +35,18 @@ offset_bottom = 50.0
 [node name="ExternalInventory" parent="HUD/InventoryInterface" index="2"]
 visible = false
 
+[node name="HotBarInventory" parent="HUD" index="3"]
+visible = false
+
+[node name="Potty" parent="." instance=ExtResource("8_7g5l2")]
+visible = false
+
 [connection signal="hit" from="Player" to="Player" method="hit_damage"]
+[connection signal="potty" from="Player" to="Potty" method="_get_player_pos"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="drop_slot_data" from="HUD/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
 [connection signal="visibility_changed" from="HUD/InventoryInterface" to="HUD/InventoryInterface" method="_on_visibility_changed"]
 
+[editable path="Player"]
 [editable path="HUD"]
+[editable path="Potty"]
