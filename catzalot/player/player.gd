@@ -5,6 +5,7 @@ signal potty
 
 var time_accumulator = 0.0
 
+@export var hand_inventory_data: InventoryDataHand
 @export var equip_inventory_data: InventoryDataEquip
 @export var inventory_data:InventoryData
 @onready var interact_ray = $InteractRay
@@ -49,7 +50,7 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		$AnimatedSprite2D.flip_h = velocity.x > 0
 	
 	time_accumulator += delta
 	

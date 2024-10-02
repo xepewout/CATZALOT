@@ -38,8 +38,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egju5"]
 
 [node name="Potty" type="Area2D"]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("1_l6si0")
 metadata/_edit_group_ = true
 

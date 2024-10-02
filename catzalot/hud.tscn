@@ -49,7 +49,6 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="InventoryInterface" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,6 +76,20 @@ visible = false
 modulate = Color(1, 1, 1, 0.533333)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+
+[node name="HandInventory" parent="InventoryInterface" instance=ExtResource("3_ovr7s")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 50.0
+
+[node name="EquipInventory" parent="InventoryInterface" instance=ExtResource("3_ovr7s")]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 50.0
 
 [node name="HotBarInventory" parent="." instance=ExtResource("6_uy41c")]
 offset_left = 10.0

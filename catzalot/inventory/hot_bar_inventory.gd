@@ -14,7 +14,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func set_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_updated.connect(populate_hot_bar)
 	populate_hot_bar(inventory_data)
+	#uses hotbar number
 	hot_bar_use.connect(inventory_data.use_slot_data)
+	#updating hand slot hopefully
+	#inventory_data.drop_slot_data(hot_bar_use.connect(inventory_data.grab_slot_data), 1)
 	
 func populate_hot_bar(inventory_data: InventoryData) -> void:
 	for child in h_box_container.get_children():
