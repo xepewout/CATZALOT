@@ -36,6 +36,8 @@ func _process(delta):
 		toggle_inventory.emit()
 	if Input.is_action_just_pressed("interact"):
 		interact()
+	if Input.is_action_just_pressed("command"):
+		command()
 	if velocity.length()>0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
@@ -57,10 +59,14 @@ func _process(delta):
 		print("emit")
 		time_accumulator = 0
 
+func command()->void:
+	if interact_ray.is_colliding():
+		interact_ray.get_collider().player_command()
+
 func interact()->void:
 	if interact_ray.is_colliding():
 		interact_ray.get_collider().player_interact()
-
+		
 func _on_body_entered(body):
 	print("hit")
 	# Player disappears after being hit.

@@ -1,11 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dogyg4nl6knwa"]
+[gd_scene load_steps=12 format=3 uid="uid://dogyg4nl6knwa"]
 
 [ext_resource type="Texture2D" uid="uid://xeh22gn3ow6b" path="res://aseprite/potty/pottyTemp.png" id="1_hpsd2"]
 [ext_resource type="Script" path="res://scenes/potty.gd" id="1_l6si0"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_00rmj"]
 [ext_resource type="Texture2D" uid="uid://dbd4a2nd6s3or" path="res://aseprite/potty/pottyTemp2.png" id="2_3rww0"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="3_jokko"]
 [ext_resource type="Texture2D" uid="uid://fp03id64s76" path="res://aseprite/potty/pottyWalk1.png" id="3_s0c5n"]
 [ext_resource type="Texture2D" uid="uid://cvdjwdef2mlqx" path="res://aseprite/potty/pottyWalk2.png" id="4_65wqc"]
 [ext_resource type="Texture2D" uid="uid://b1j4mkvtwlivn" path="res://aseprite/potty/pottyWalk3.png" id="5_exq7c"]
+
+[sub_resource type="Resource" id="Resource_o4fhq"]
+script = ExtResource("2_00rmj")
+slot_datas = Array[ExtResource("3_jokko")]([null, null, null, null, null])
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8mucj"]
 animations = [{
@@ -37,10 +43,10 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egju5"]
 
-[node name="Potty" type="Area2D"]
-collision_layer = 0
+[node name="Potty" type="Area2D" groups=["external_inventory"]]
 collision_mask = 0
 script = ExtResource("1_l6si0")
+inventory_data = SubResource("Resource_o4fhq")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -51,3 +57,5 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_egju5")
+
+[node name="CookTimer" type="Timer" parent="."]
