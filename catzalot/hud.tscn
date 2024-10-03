@@ -79,6 +79,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 
 [node name="HotBarInventory" parent="." instance=ExtResource("6_uy41c")]
+visible = false
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 122.0

@@ -45,6 +45,13 @@ func grab_slot_data(index: int) ->SlotData:
 	else:
 		return null
 		
+func update_hand_slot(index: int) -> void:
+	
+	var slot_data = slot_datas[index]
+	if not slot_data:
+		return
+	PlayerManager.update_hand_slot(slot_data)
+		
 func use_slot_data(index: int) -> void:
 	var slot_data = slot_datas[index]
 	

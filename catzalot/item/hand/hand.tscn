@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwaim50c1ef00"]
+
+[ext_resource type="Texture2D" uid="uid://cj7a7few6hqow" path="res://item/item_atlas.tres" id="1_f8sc4"]
+[ext_resource type="Script" path="res://item/hand/hand.gd" id="1_l7oy1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncjic"]
+radius = 3.0
+height = 14.0
+
+[node name="Hand" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_l7oy1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f8sc4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ncjic")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ncjic")

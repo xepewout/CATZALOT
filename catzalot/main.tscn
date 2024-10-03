@@ -35,9 +35,6 @@ offset_bottom = 50.0
 [node name="ExternalInventory" parent="HUD/InventoryInterface" index="2"]
 visible = false
 
-[node name="HotBarInventory" parent="HUD" index="3"]
-visible = false
-
 [node name="Potty" parent="." instance=ExtResource("8_7g5l2")]
 visible = false
 
