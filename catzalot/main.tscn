@@ -1,17 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://1x2owrq46xfb"]
+[gd_scene load_steps=10 format=3 uid="uid://1x2owrq46xfb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b8yb5"]
 [ext_resource type="PackedScene" uid="uid://6ynptgi42nqf" path="res://player/player.tscn" id="2_v28bl"]
 [ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="3_2k7q7"]
 [ext_resource type="PackedScene" uid="uid://cmxq7eqyaxeqv" path="res://hud.tscn" id="3_6ok3w"]
 [ext_resource type="Resource" uid="uid://cdxvp5ncpsxae" path="res://test_inv.tres" id="3_l02lj"]
-[ext_resource type="Script" path="res://inventory/inventory_data_hand.gd" id="3_vxr2m"]
 [ext_resource type="PackedScene" uid="uid://dogyg4nl6knwa" path="res://scenes/potty.tscn" id="8_7g5l2"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="8_48rsi"]
-
-[sub_resource type="Resource" id="Resource_agnid"]
-script = ExtResource("3_vxr2m")
-slot_datas = Array[ExtResource("8_48rsi")]([null])
+[ext_resource type="PackedScene" uid="uid://bosbtu5s70ymg" path="res://inventory/inventory.tscn" id="10_4befs"]
 
 [sub_resource type="Resource" id="Resource_6xcuw"]
 script = ExtResource("3_2k7q7")
@@ -22,7 +18,6 @@ script = ExtResource("1_b8yb5")
 
 [node name="Player" parent="." instance=ExtResource("2_v28bl")]
 visible = false
-hand_inventory_data = SubResource("Resource_agnid")
 equip_inventory_data = SubResource("Resource_6xcuw")
 inventory_data = ExtResource("3_l02lj")
 
@@ -30,25 +25,15 @@ inventory_data = ExtResource("3_l02lj")
 
 [node name="HUD" parent="." instance=ExtResource("3_6ok3w")]
 
-[node name="InventoryInterface" parent="HUD" index="2"]
-visible = false
-
-[node name="ExternalInventory" parent="HUD/InventoryInterface" index="1"]
-visible = false
-
-[node name="HandInventory" parent="HUD/InventoryInterface" index="3"]
+[node name="EquipInventory" parent="HUD/InventoryInterface" index="1" instance=ExtResource("10_4befs")]
 layout_mode = 0
-offset_left = 499.0
-offset_top = 263.0
-offset_right = 539.0
-offset_bottom = 303.0
+offset_left = 150.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 50.0
 
-[node name="EquipInventory" parent="HUD/InventoryInterface" index="4"]
-layout_mode = 0
-offset_left = 397.0
-offset_top = 73.0
-offset_right = 437.0
-offset_bottom = 113.0
+[node name="ExternalInventory" parent="HUD/InventoryInterface" index="2"]
+visible = false
 
 [node name="HotBarInventory" parent="HUD" index="3"]
 visible = false
