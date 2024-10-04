@@ -84,10 +84,13 @@ func pick_up_slot_data(slot_data: SlotData) -> bool:
 func on_slot_clicked(index: int, button: int) -> void:
 	inventory_interact.emit(self, index,button)
 	
-func test(slot_data: SlotData) -> void:
+func hand_drop(slot_data: SlotData) -> void:
 	for index in slot_datas.size():
-		if slot_datas[index] and slot_datas[index].can_fully_merge_with(slot_data):
+		if slot_datas[index] and slot_datas[index].item_data == slot_data.item_data:
 			slot_datas[index].set_quantity(slot_datas[index].quantity - 1)
+			if(slot_datas[index].quantity < 1):
+				slot_datas[index] = null
 			inventory_updated.emit(self)
+			break
 	print("test works!")
 	

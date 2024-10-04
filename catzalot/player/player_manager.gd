@@ -27,5 +27,5 @@ func update_hand_slot(slot_data: SlotData) -> void:
 
 func clear_hand_slot() -> void:
 	player.get_child(4).queue_free()
-	player.inventory_data.test(hand_slot)
+	player.inventory_data.hand_drop(hand_slot)
 	#pass
