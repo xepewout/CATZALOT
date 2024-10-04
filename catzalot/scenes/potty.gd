@@ -50,21 +50,15 @@ func player_command() -> void:
 	var slot = Slot.instantiate()
 	slot = PlayerManager.hand_slot
 	var index = 0
+	# Stops the loop once an empty slot is found
 	for i in range(len(inventory_data.slot_datas)):
 		if not inventory_data.slot_datas[i]:
 			index = i
 			break 
-	# Stops the loop once an empty slot is found
-	inventory_data.drop_slot_data(slot, index)
-	PlayerManager.clear_hand_slot()
+	#gets rid of two
+	inventory_data.drop_single_slot_data(slot, index)
+	if(slot.quantity == 0):
+		PlayerManager.clear_hand_slot()
+	PlayerManager.update_hand()
+	inventory_data.inventory_updated.emit(self)
 	print("command")
-	pass
-	#TODO put current hand item into potty 
-	#for slot_data in inventory_data.slot_datas:
-		#var slot = Slot.instantiate()
-		#item_grid.add_child(slot)
-		#
-		#slot.slot_clicked.connect(inventory_data.on_slot_clicked)
-		#
-		#if slot_data:
-			#slot.set_slot_data(slot_data)

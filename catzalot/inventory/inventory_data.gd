@@ -7,6 +7,9 @@ signal inventory_interact(inventory_data: InventoryData,index: int, button: int)
 
 @export var slot_datas: Array[SlotData]
 
+#func put_in_potty(SlotData, index: int) -> void:
+	#pass
+
 func drop_slot_data(grabbed_slot_data: SlotData, index: int) ->SlotData:
 	var slot_data = slot_datas[index] #get current slot data
 	
@@ -84,13 +87,14 @@ func pick_up_slot_data(slot_data: SlotData) -> bool:
 func on_slot_clicked(index: int, button: int) -> void:
 	inventory_interact.emit(self, index,button)
 	
+#probably trash
 func hand_drop(slot_data: SlotData) -> void:
 	for index in slot_datas.size():
 		if slot_datas[index] and slot_datas[index].item_data == slot_data.item_data:
-			slot_datas[index].set_quantity(slot_datas[index].quantity - 1)
+			#slot_datas[index].set_quantity(slot_datas[index].quantity - 1)
 			if(slot_datas[index].quantity < 1):
 				slot_datas[index] = null
-			inventory_updated.emit(self)
-			break
+	inventory_updated.emit(self)
+			#break
 	print("test works!")
 	
