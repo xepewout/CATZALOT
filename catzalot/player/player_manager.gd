@@ -13,8 +13,6 @@ func update_hand_slot(slot_data: SlotData) -> void:
 	if hand_slot == slot_data:
 		print("1")
 		return
-
-	# Unload the current room if any exists
 	if player.get_child_count() > 4:
 		print("2")
 		player.get_child(4).queue_free()
@@ -22,10 +20,12 @@ func update_hand_slot(slot_data: SlotData) -> void:
 	var hand = Hand.instantiate() as Node
 	hand.slot_data = slot_data
 	player.add_child(hand)
-	#var hand_instance: Node = slot_data.instantiate() as Node
-	#player.add_child(pick_up)
 
-	# Update the current room path
 	hand_slot = slot_data
 	print(hand_slot.item_data.name)
-	#player.add_child(hand_slot)
+
+
+func clear_hand_slot() -> void:
+	player.get_child(4).queue_free()
+	player.inventory_data.test(hand_slot)
+	#pass

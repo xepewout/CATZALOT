@@ -46,8 +46,17 @@ func player_interact() -> void:
 	print (cook, cook_time)
 	
 func player_command() -> void:
+	
 	var slot = Slot.instantiate()
-	inventory_data.slot_datas[1].set_slot_data(PlayerManager.hand_slot)
+	slot = PlayerManager.hand_slot
+	var index = 0
+	for i in range(len(inventory_data.slot_datas)):
+		if not inventory_data.slot_datas[i]:
+			index = i
+			break 
+	# Stops the loop once an empty slot is found
+	inventory_data.drop_slot_data(slot, index)
+	PlayerManager.clear_hand_slot()
 	print("command")
 	pass
 	#TODO put current hand item into potty 
