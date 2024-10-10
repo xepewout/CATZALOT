@@ -11,11 +11,11 @@ var time_accumulator = 0.0
 var player_pos: Vector2
 var lerpys: Vector2
 var cook_time = 0.0
-var cook: bool
+var cooking: bool
 
 
 func _ready():
-	cook = false
+	cooking = false
 	pass
 
 func _get_player_pos(playerPosition: Vector2):
@@ -23,10 +23,9 @@ func _get_player_pos(playerPosition: Vector2):
 	print("player_pos set to", player_pos)
 	
 func _process(delta):
-	
-	if cook:
+	if cooking:
 		cook_time += delta
-	if !cook:
+	if !cooking:
 		cook_time = 0.0
 		
 	time_accumulator+=delta
@@ -42,11 +41,20 @@ func _process(delta):
 	
 func player_interact() -> void:
 	toggle_inventory.emit(self)
-	cook = !cook
-	print (cook, cook_time)
+	if cooking:
+		if is_cookable(inventory_data):
+			cook(inventory_data)
+	cooking = !cooking
+	print (cooking, cook_time)
 	
+	
+##Author: Yoshi - 10/4/2024
+##Function: player_command
+##Parameters: none
+##Variables: slot - used to get current players hand slot
+##Description: Finds an empty slot in object potty's inventory and drops
+##the current player hand slot into it then updates the ui 
 func player_command() -> void:
-	
 	var slot = Slot.instantiate()
 	slot = PlayerManager.hand_slot
 	var index = 0
@@ -60,5 +68,20 @@ func player_command() -> void:
 	if(slot.quantity == 0):
 		PlayerManager.clear_hand_slot()
 	PlayerManager.update_hand()
-	inventory_data.inventory_updated.emit(self)
-	print("command")
+
+##Author: Yoshi - 10/5/2024
+##Function: is_cookable
+##Description: Used to check if current potty inventory data
+## can be cooked, returns true if it can, false if it can't
+func is_cookable(inventory_data: InventoryData) -> bool:
+	return true
+	
+##Author: Yoshi - 10/5/2024
+##Function: cook
+##Parameters: inventory_data of type InventoryData
+##Description: Takes pottys current inventory data, clears it and
+## spits out the resulting potion
+func cook(inventory_data: InventoryData) -> SlotData:
+	var slot = Slot.instantiate()
+	slot = PlayerManager.hand_slot
+	return slot

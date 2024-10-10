@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7egebds2d4n2"
-path="res://.godot/imported/chest.png-30774482791be5c8adeda9e2753e7806.ctex"
+uid="uid://bixupl3wa3igd"
+path="res://.godot/imported/bush-Sheet.png-aaa953a2ef24e9d8223566d3b3e166d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://aseprite/chest.png"
-dest_files=["res://.godot/imported/chest.png-30774482791be5c8adeda9e2753e7806.ctex"]
+source_file="res://aseprite/interactables/bush-Sheet.png"
+dest_files=["res://.godot/imported/bush-Sheet.png-aaa953a2ef24e9d8223566d3b3e166d3.ctex"]
 
 [params]
 

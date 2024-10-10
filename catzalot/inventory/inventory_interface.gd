@@ -11,7 +11,6 @@ var external_inventory_owner
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
 @onready var equip_inventory = $EquipInventory
-@onready var hand_slot = $HandSlot
 
 func _physics_process(delta):
 	if grabbed_slot.visible:

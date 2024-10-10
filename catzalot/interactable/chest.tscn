@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dubw83q1q48j3"]
 
 [ext_resource type="Script" path="res://interactable/chest.gd" id="1_8hvc8"]
-[ext_resource type="Texture2D" uid="uid://b7egebds2d4n2" path="res://aseprite/chest.png" id="1_w1nsk"]
+[ext_resource type="Texture2D" uid="uid://b7egebds2d4n2" path="res://aseprite/interactables/chest.png" id="1_w1nsk"]
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_ptd76"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="3_726br"]
 [ext_resource type="Resource" uid="uid://dyi4gkixhl307" path="res://item/items/apple.tres" id="4_570hw"]

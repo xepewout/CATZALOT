@@ -24,7 +24,6 @@ func update_hand_slot(slot_data: SlotData) -> void:
 	hand_slot = slot_data
 	print(hand_slot.item_data.name)
 
-
 func clear_hand_slot() -> void:
 	if player.get_child(4) == null:
 		return

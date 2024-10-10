@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwk5w00l2cbpg"]
+
+[ext_resource type="Script" path="res://interactable/bush.gd" id="1_as0xj"]
+[ext_resource type="Texture2D" uid="uid://bixupl3wa3igd" path="res://aseprite/interactables/bush-Sheet.png" id="1_fjl73"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_qs2n2"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="3_ygx6p"]
+
+[sub_resource type="Resource" id="Resource_4drsb"]
+script = ExtResource("2_qs2n2")
+slot_datas = Array[ExtResource("3_ygx6p")]([])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4qaj"]
+atlas = ExtResource("1_fjl73")
+region = Rect2(0, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17glj"]
+atlas = ExtResource("1_fjl73")
+region = Rect2(16, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78mhk"]
+atlas = ExtResource("1_fjl73")
+region = Rect2(32, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1wpy"]
+atlas = ExtResource("1_fjl73")
+region = Rect2(48, 0, 16, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uifk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4qaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17glj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78mhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1wpy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ridj"]
+radius = 8.0
+
+[node name="Bush" type="StaticBody2D" groups=["external_inventory"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_as0xj")
+inventory_data = SubResource("Resource_4drsb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1uifk")
+frame = 1
+frame_progress = 0.364789
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ridj")

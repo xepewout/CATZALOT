@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5refm32wcct"]
+[gd_scene load_steps=11 format=3 uid="uid://b5refm32wcct"]
 
 [ext_resource type="Script" path="res://rooms/test_room.gd" id="1_qvypp"]
 [ext_resource type="PackedScene" uid="uid://c1aoqyjflvy6h" path="res://scenes/mob_mouse.tscn" id="2_nflde"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c7r2dejd7b1hu" path="res://item/pick_up/pick_up.tscn" id="5_2by07"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="6_d1ef7"]
 [ext_resource type="Resource" uid="uid://dyi4gkixhl307" path="res://item/items/apple.tres" id="6_xmwlk"]
+[ext_resource type="PackedScene" uid="uid://cwk5w00l2cbpg" path="res://interactable/bush.tscn" id="8_jko36"]
 
 [sub_resource type="Curve2D" id="Curve2D_c47cg"]
 _data = {
@@ -51,5 +52,8 @@ z_index = -1
 offset_right = 576.0
 offset_bottom = 320.0
 color = Color(0.375683, 0.76007, 0.463791, 1)
+
+[node name="Bush" parent="." instance=ExtResource("8_jko36")]
+position = Vector2(128, 48)
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
