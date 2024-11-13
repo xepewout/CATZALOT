@@ -86,6 +86,9 @@ func pick_up_slot_data(slot_data: SlotData) -> bool:
 #inventory interact signal
 func on_slot_clicked(index: int, button: int) -> void:
 	inventory_interact.emit(self, index,button)
+
+func world_drop(slot_data: SlotData) -> void:
+	pass
 	
 #probably trash
 func hand_drop(slot_data: SlotData) -> void:

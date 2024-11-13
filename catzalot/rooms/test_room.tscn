@@ -45,6 +45,7 @@ position = Vector2(107, 87)
 
 [node name="PickUp" parent="." instance=ExtResource("5_2by07")]
 position = Vector2(42, 72)
+disable_mode = 1
 slot_data = SubResource("Resource_3gh0n")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -57,3 +58,4 @@ color = Color(0.375683, 0.76007, 0.463791, 1)
 position = Vector2(128, 48)
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="drop_slot_data" from="Bush" to="." method="_drop_slot_data"]

@@ -2,6 +2,7 @@ extends Node
 
 @export var mob_mouse_scene: PackedScene
 
+const PickUp = preload("res://item/pick_up/pick_up.tscn")
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
 	var mob = mob_mouse_scene.instantiate()
@@ -31,3 +32,8 @@ func _ready():
 	$MobTimer.start()
 	print("TestRoom Starting!")
 	
+func _drop_slot_data(slot_data):
+	var pick_up = PickUp.instantiate()
+	pick_up.slot_data = slot_data
+	pick_up.position = PlayerManager.get_position() + Vector2(20,0)
+	add_child(pick_up)

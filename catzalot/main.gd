@@ -34,7 +34,7 @@ func load_room(room_path: String) -> void:
 	print(current_room_path)
 
 func new_game():
-	load_room("res://rooms/test_room.tscn")
+	load_room("res://rooms/start_room.tscn")
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)	
 	player.show()

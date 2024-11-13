@@ -58,7 +58,8 @@ func _process(delta):
 		potty.emit(self.global_position)
 		print("emit")
 		time_accumulator = 0
-
+	velocity = move_and_slide()
+	
 func command()->void:
 	if interact_ray.is_colliding():
 		interact_ray.get_collider().player_command()
